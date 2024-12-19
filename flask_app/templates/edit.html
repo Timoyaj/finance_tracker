@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Transaction</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Edit Transaction</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Edit Transaction</h2>
+            <form method="post">
+                <label for="date">Date</label>
+                <input type="date" name="date" value="{{ transaction.date }}" required title="Date">
+                <label for="amount">Amount</label>
+                <input type="number" name="amount" step="0.01" value="{{ transaction.amount }}" required title="Amount">
+                 <label for="category">Category</label>
+                <select name="category" required title="Category">
+                    <option value="">Select a category</option>
+                    <option value="income" {% if transaction.category == 'income' %}selected{% endif %}>Income</option>
+                    <option value="expense" {% if transaction.category == 'expense' %}selected{% endif %}>Expense</option>
+                </select>
+                <label for="description">Description</label>
+                <input type="text" name="description" value="{{ transaction.description }}" required title="Description">
+                <button type="submit">Save Changes</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
